@@ -1,0 +1,382 @@
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Lobster|Railway");
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Lobster|Railway");
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Lobster|Railway");
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Lobster|Railway");
+.home-view {
+  flex-grow: 2; }
+
+.nav-menu-btn {
+  display: none; }
+
+@media screen and (max-width: 850px) {
+  .arrow-left {
+    display: none; }
+
+  .home-view {
+    flex-grow: 1;
+    align-content: center !important;
+    align-items: center !important;
+    width: 100%;
+    height: 90%;
+    text-align: center; }
+
+  .l-2-el {
+    flex-grow: 1; }
+
+  .l-1 {
+    font-size: 9vmax !important; }
+
+  .l-3, .l-2 {
+    font-size: 6vmax !important;
+    white-space: pre-line; }
+
+  .l-1, .l-2, .l-3 {
+    flex-basis: 33.3%;
+    display: flex;
+    align-items: center; } }
+.l-1 {
+  font-family: 'Lobster', cursive;
+  font-size: 70px; }
+
+.l-2 {
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: space-around;
+  font-size: 50px; }
+
+.l-3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px; }
+
+.red-word {
+  color: #FF5960; }
+
+.red-word:link, .red-word:visited {
+  color: #FF5960; }
+
+.btn-new {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px; }
+
+.l-2-el {
+  white-space: pre-line;
+  width: 33.3%;
+  text-align: center; }
+
+.poll-add-view {
+  flex-grow: 2; }
+
+.polls-list {
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; }
+
+.polls-list::-webkit-scrollbar {
+  display: none;
+  background: rgba(255, 255, 255, 0); }
+
+.polls-list-item {
+  width: 100%;
+  padding: 0px;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 27px;
+  background-color: rgba(255, 255, 255, 0.1); }
+
+.polls-list-item:hover {
+  color: white;
+  background: rgba(255, 100, 100, 0.4); }
+
+@media screen and (max-width: 850px) {
+  .polls-list {
+    overflow-y: visible; } }
+.poll-view {
+  flex-grow: 2; }
+
+.btn {
+  font-family: 'Lobster', sans-serif;
+  font-size: 20px;
+  padding: 3px 2px 3px 2px;
+  text-align: center;
+  background-color: #FF5960;
+  border-radius: 10px; }
+
+.option-cell {
+  fill-opacity: 0.7;
+  stroke-opacity: 0.7;
+  stroke-width: 3px; }
+
+.chosen-sector {
+  font-size: 30px;
+  font-family: 'Barlow Condensed', sans-serif; }
+
+.poll-view-header {
+  font-family: 'Lobster', cursive;
+  font-size: 70px;
+  text-align: center; }
+
+.right-line {
+  justify-content: center;
+  align-items: center; }
+
+.poll-view-sub-headers {
+  width: 80%;
+  height: 70%;
+  border: 5px solid;
+  justify-content: space-between;
+  align-items: space-between;
+  flex-grow: 0; }
+
+.p-1 {
+  font-family: 'Lobster', cursive;
+  color: #FF5960 !important;
+  font-size: 50px; }
+
+body, html {
+  height: 100%;
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  background-image: url("https://i.imgur.com/hn2Ukum.jpg");
+  color: white; }
+
+.flex-centered-column, .home-view, .poll-add-view, .poll-view, .left-line, .right-line {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+
+.polls-list-container {
+  height: 85%;
+  width: 25%; }
+
+.flex-row, .poll-view-sub-headers {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center; }
+
+.app {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto; }
+
+.parallax {
+  /* The image used */
+  background-image: url("https://i.imgur.com/hn2Ukum.jpg");
+  /* Full height */
+  height: 100%;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.toolbar {
+  font-family: 'Barlow Condensed', sans-serif;
+  display: flex;
+  position: fixed;
+  top: 0px;
+  justify-content: space-between;
+  align-items: center; }
+
+.main-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center; }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 260px;
+  font-size: 24px; }
+
+@media screen and (max-width: 850px) {
+  .logo {
+    text-align: center; }
+
+  .logo:hover, .hoverable:hover, a:hover {
+    color: white; }
+
+  .nav {
+    display: block;
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    text-align: center; }
+
+  .inline {
+    justify-content: center; }
+
+  .polls-list-container, .nav {
+    display: none; }
+
+  .polls-list-container {
+    height: 0%;
+    transition: 0.5s;
+    top: 100%;
+    width: 100%;
+    display: flex !important;
+    justify-content: flex-end;
+    flex-direction: column;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Black*/
+    overflow-y: scroll;
+    position: fixed;
+    z-index: 2; }
+
+  .polls-list-container-visible {
+    top: 0%;
+    height: 100%; }
+
+  .polls-list {
+    margin-top: 12%;
+    height: 100%;
+    width: 100%; }
+
+  .toolbar {
+    justify-content: center;
+    display: flex;
+    z-index: 3;
+    font-size: 33px;
+    height: 7%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4); }
+
+  .main-content {
+    display: flex;
+    width: 100%;
+    height: 100%; }
+
+  .poll-list-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 7vmin;
+    right: 7vmin;
+    position: fixed;
+    border-radius: 50%;
+    width: 7vmax;
+    height: 7vmax;
+    background-color: #FF5960;
+    transition: 0.5s;
+    opacity: 1;
+    animation: halo 1s linear infinite; }
+
+  .poll-list-btn-active {
+    opacity: 0;
+    bottom: -10%; }
+
+  @keyframes halo {
+    from {
+      border: 0px solid black; }
+    to {
+      border: 20px solid white; } }
+  .btn-image {
+    width: 70%;
+    height: 70%;
+    opacity: 1;
+    background-image: url("../icons/poll-list.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; }
+
+  .nav-menu-btn {
+    display: block;
+    left: 3.5%;
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+    background: url("../icons/fb.svg");
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    transition: 0.5s; }
+
+  .cross {
+    background-image: url("../icons/cross.svg"); }
+
+  .side-menu {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0%;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */ }
+
+  .side-menu-opened {
+    width: 100%; }
+
+  .nav-menu-btn-moved {
+    transform: rotate(360deg);
+    background-image: url("../icons/cross.svg");
+    z-index: 2; } }
+.visible {
+  display: block; }
+
+.logo:hover, .hoverable:hover, a:hover {
+  color: #FF5960;
+  transform: rotateY(10deg); }
+
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  flex-grow: 2; }
+
+.inline {
+  display: flex;
+  align-items: center; }
+
+a, a:link, a:visited {
+  color: white;
+  text-decoration: none; }
+
+.icon-container {
+  margin-left: 8px;
+  height: 30px;
+  width: 30px;
+  flex-shrink: 100;
+  background-color: white; }
+
+.fb-icon {
+  height: 100%;
+  width: 100%;
+  flex-shrink: 100;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNjdweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDY3IDY3OyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNjcgNjciIHdpZHRoPSI2N3B4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNMjguNzY1LDUwLjMxOWg2Ljc0NFYzMy45OThoNC40OTlsMC41OTYtNS42MjRoLTUuMDk1ICBsMC4wMDctMi44MTZjMC0xLjQ2NiwwLjE0LTIuMjUzLDIuMjQ0LTIuMjUzaDIuODEyVjE3LjY4aC00LjVjLTUuNDA1LDAtNy4zMDcsMi43MjktNy4zMDcsNy4zMTd2My4zNzdoLTMuMzY5djUuNjI1aDMuMzY5VjUwLjMxOXogICBNMyw0aDYwdjYwSDNWNHoiIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiMzQTU4OUI7Ii8+PC9zdmc+");
+  background-size: 100% 100%; }
+
+/*# sourceMappingURL=main.css.map */

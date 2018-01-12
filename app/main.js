@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+//import 'patchReact';
 
 import Root from './config/Root';
 
@@ -9,8 +10,7 @@ const render = (Component) => {
     <AppContainer>
       <Component />
     </AppContainer>,
-    document.getElementById('root'),
-  );
+    document.getElementById('root'));
 };
 
 render(Root);

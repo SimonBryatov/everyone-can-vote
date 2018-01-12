@@ -19,7 +19,14 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "linebreak-style": "off",
     "global-require": "off",
-    "semi": "warn",
-    "arrow-body-style": "off"
+    "semi": "off",
+    "arrow-body-style": "off",
+    "react/jsx-equals-spacing": "off",
+    "react/jsx-indent" : "off",
+    "react/jsx-tag-spacing" : "off",
+    "no-trailing-spaces" : "off",
+    "react/prop-types" : "off",
+    "object-curly-spacing": "off",
+    "react/self-closing-comp" : "off"
   }
 }

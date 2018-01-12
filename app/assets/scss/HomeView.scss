@@ -1,0 +1,147 @@
+@import './partials';
+.home-view {
+    @extend .flex-centered-column;
+    flex-grow: 2;
+     height: 80%;
+    //  display: flex;
+    //  flex-direction: column;
+     //border: 1px solid;
+}
+
+
+    // .l-3 span {
+    //  display: inline-block;
+    // }
+  .nav-menu-btn {
+   display: none;
+  }
+
+@media screen and (max-width: 850px) {
+    .arrow-left {
+     display: none;
+    }
+    
+    
+    .home-view {
+     //background-color: red;
+     display: flex;
+     flex-grow: 1;
+     justify-content: center !important;
+     align-content: center !important;
+     //justify-content: space-around;
+     align-items: center !important;
+     
+     //align-content: flex-start;
+     width: 100%;
+     //flex-direction: row;
+     height: 90%;
+     text-align: center;
+      
+    }
+    
+    .l-2-el {
+     flex-grow: 1;
+         //font-size: 10px;
+    }
+    
+    .l-1 {
+     font-size: 9vmax !important;
+    }
+    
+    .l-3 {
+       display: block;
+       white-space: pre-line;
+       text-align: center;
+      // justify-content: space-between;
+      // width: 40%;
+    }
+    
+    .red-word {
+     //white-space: no-wrap;
+    }
+    
+     .l-3, .l-2 {
+        font-size: 6vmax !important;
+       // white-space: pre-line;
+       // display: block;
+      }
+   
+
+span { display: block; }
+    
+   .l-1, .l-2, .l-3 {
+     //border: 1px solid;
+     flex-basis: 33.3%;
+     //flex-grow: 1;
+     //background-color: yellow;
+     //white-space: pre-wrap;
+      vertical-align: middle;
+     display: flex;
+     //position: relative;
+     //top: 50%;
+     align-items: center;
+     //justify-content: center;
+    // padding: 0px;
+    // margin: 0px;
+     //width: 100%;
+    }
+    
+    .btn-new {
+       margin-left: 20px;
+    }
+    
+}
+
+.l-1 {
+ font-family: 'Lobster', cursive;
+ font-size: 70px;
+}
+
+.l-2 {
+   font-family: 'Raleway', sans-serif; 
+   display: flex;
+   width: 100%;
+   text-align: center;
+   justify-content: space-around;
+   //color: $someRed; 
+   font-size: 50px;
+}
+
+.l-3 {
+   font-family: 'Raleway', sans-serif;
+   //color: $someRed;
+  // background: rgba(300,300,300, 0.1); 
+  // border-radius: 20px;
+   font-size: 50px;
+}
+ 
+ .red-word {
+    color: $someRed; 
+ }
+ 
+ .red-word:link, .red-word:visited {
+   color: $someRed;
+ }
+ 
+ .btn-new {
+   background: rgba(300,300,300, 0.1); 
+   border: 3px dashed white;
+   //border-radius: 20px;
+ }
+ 
+ .l-2-el {
+  white-space: pre-line;
+  //border: 1px solid;
+  width: 33.3%;
+  text-align: center;
+  //justify-self: center;
+   //  flex-grow: 2;
+ }
+ 
+
+.header {
+  font-family: 'Lobster', cursive;
+ font-size: 70px;
+ //flex-basis: 10%;
+}
+
