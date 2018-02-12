@@ -86,7 +86,7 @@ let sessionCheck = (userId, poll_id) => {
  if (!poll_id) {
 
   
-   if (sessionManager[ind].pollsAdded < 2) {
+   if (sessionManager[ind].pollsAdded < 3) {
      console.log("Session check: New Poll")
      sessionManager[ind].pollsAdded++;
      sessionManager[ind].lastPollAt = Date.now();
@@ -94,7 +94,7 @@ let sessionCheck = (userId, poll_id) => {
   }  
   
   
-  else if (Date.now() - sessionManager[ind].lastPollAt >= 10000) {
+  else if (Date.now() - sessionManager[ind].lastPollAt >= 86400000) {
      console.log("Session check: Reset")
      sessionManager[ind].pollsAdded = 1;
      sessionManager[ind].lastPollAt = Date.now();
@@ -127,7 +127,7 @@ let sessionCheck = (userId, poll_id) => {
   }  
   
   
-  else if (Date.now() - sessionManager[ind].polls[pollInd].lastAt >= 10000) {
+  else if (Date.now() - sessionManager[ind].polls[pollInd].lastAt >= 86400000) {
      console.log("Session check: Reset")
      sessionManager[ind].polls[pollInd].amount = 1;
      sessionManager[ind].polls[pollInd].lastAt = Date.now();
