@@ -41,10 +41,12 @@ app.enable("trust proxy");
 app.use(cookieParser())
 app.use(flash())
 
+console.log(process.NODE_ENV)
+
 mongoose.connect(process.env.MONGOLAB_URI , () => {});
   mongoose.connection.once('open', function() {
             console.log('MongoDB event open');
-             app.listen(process.env.PORT || 8080, process.env.IP, () => {
+             app.listen(process.env.PORT || 5000, () => {
      console.log("Online");
  })
             mongoose.connection.db.collection("Polls", function(err, collection){
