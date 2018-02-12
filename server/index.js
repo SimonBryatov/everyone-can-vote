@@ -44,7 +44,7 @@ app.use(flash())
 mongoose.connect(process.env.MONGOLAB_URI , () => {});
   mongoose.connection.once('open', function() {
             console.log('MongoDB event open');
-             app.listen(8081, process.env.IP, () => {
+             app.listen(process.env.PORT || 8080, process.env.IP, () => {
      console.log("Online");
  })
             mongoose.connection.db.collection("Polls", function(err, collection){
