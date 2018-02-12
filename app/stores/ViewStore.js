@@ -1,22 +1,20 @@
-import {observable, action, computed, box} from 'mobx';
+import {observable, action, computed} from 'mobx';
 import { toJS } from 'mobx';
+
 
 class ViewStore {
     constructor() {
-        console.log("store is ready")
+        console.log("store is ready, really ready, really")
     }
-    @observable currentPoll = {
-    options : [
-        {name: "Metal Gear Solid 5", val: 4}, {name: "Grand Theft Auto V", val: 5}, {name: "Need For Speed: Most Wanted (2005)", val: 1}, {name: "Life is Strange", val: 2}
-    ]
-};
+    @observable currentPoll = null;
+    @observable pollsList = null;
     activeOptionIndex = observable(0);
-    updater = observable(true);
+    dataIsFetching = observable(true);
     isSideMenuOpened = observable(false);
     choosePollMenuOpened = observable(false);
-    chosenOptionIndex = observable(-1);
+    chosenOptionIndex = observable(null);
     isMobileVersion = observable(false);
-    @observable colorMap = 0;
+    @observable colorMap = null;
     @computed get optionsPercentageMap() {
         let map = []
         let totalAmount = this.currentPoll.options.length;
@@ -36,15 +34,33 @@ class ViewStore {
        return(toJS(this[objectName]))
    }
    
+   @action.bound setProperty(objName, data) {
+           this[objName] = data;
+           console.log(this.pollsList, 'hey')
+   }
+   
    sectorColor(ind) {
        let color = this.colorMap[ind]
        if (ind == this.activeOptionIndex) {
-        //  color = LightenDarkenColor(color, 150);
        }
        return color;
    }
    
-    @action.bound setPollView() {
+    @action.bound setPollView(id) {
+            this.chosenOptionIndex.set(null)
+            this.currentPoll = this.pollsList.find((e) => {
+                if (e['_id'] == id) {
+                    return e
+                    
+                } else {
+                return null
+            } });
+            
+            if (this.currentPoll.options.length - 1 < this.activeOptionIndex) {
+                this.activeOptionIndex.set(0);
+            }
+            if (this.currentPoll == null) return;
+            console.log("Setting Poll View", this.currentPoll);
      let colorMap = [];
      let amount = 0;
     this.currentPoll.options.forEach((opt, ind) => {
@@ -52,7 +68,7 @@ class ViewStore {
         colorMap.push(getRandomColor()); 
         amount+=opt.val})   
      this.colorMap = colorMap;
-     console.log("woooooa", toJS(this.colorMap))
+
     }
     
     @action.bound setOptionIndex(ind) {

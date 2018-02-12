@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
-//  import fbLogo from 'svg-url-loader?noquotes!.../assets/icons/facebook-logo.svg'
-import './ToolBar.scss';
+var cookies = require('browser-cookies');
 
 let closeSideMenu = (ViewStore) => {
   ViewStore.isSideMenuOpened.set(false);
@@ -16,39 +15,63 @@ let onMainBtnClick = (ViewStore) => {
    ViewStore.isSideMenuOpened.set(!ViewStore.isSideMenuOpened.get())
   }
 }
-
-const ToolBar = inject("ViewStore")(observer((props) => {
+const ToolBar = inject("ViewStore", "ApiStore")(observer((props) => {
     let navBtn = props.ViewStore.isSideMenuOpened.get() || props.ViewStore.choosePollMenuOpened.get() ? "nav-menu-btn nav-menu-btn-moved" : "nav-menu-btn";
    return(
     <div className = "toolbar">
     <div className = {navBtn} onClick = {() => {onMainBtnClick(props.ViewStore)}}> </div>
-    <Link to = "/"><div className = "logo" onClick = {() => {closeSideMenu(props.ViewStore)}}>EVERYONE-CAN-VOTE</div></Link>
-    <VisibleTabs ViewStore = {props.ViewStore} />
+     <div className = "flex-item flex-item-logo"><Link to = "/"><div className = "logo" onClick = {() => {closeSideMenu(props.ViewStore)}}>EVERYONE-CAN-VOTE</div></Link></div>
+     
+     
+    {visibleTabs(props.ViewStore, props.isLoggedIn, props.ApiStore, props.ApiStore.userName.get())}
+    
     </div>
     )
 }))
+// 
 
-const VisibleTabs = (props) => {
- 
- let navClass = props.ViewStore.isSideMenuOpened.get() ? "nav visible" : "nav" 
- 
- return( props.loggedIn ? 
-  <div className = "nav">
- <Link to = "/" onClick = {() => {closeSideMenu(props.ViewStore)}}><div className = "hoverable">Home</div></Link>
-  <Link to = "/addpoll" onClick = {() => {closeSideMenu(props.ViewStore)}}><div className = "hoverable">New Poll</div></Link>
-  <div className = "nav inline" onClick = {() => {closeSideMenu(props.ViewStore)}}>Sign in</div>
-  
-  </div> :
+const visibleTabs = (ViewStore, isLoggedIn, ApiStore, userName) => {
+ if (!isLoggedIn) {
+ }
+ let navClass = ViewStore.isSideMenuOpened.get() ? "nav nav-visible" : "nav" 
+ navClass += " nav-links";
+ let content = isLoggedIn ? 
   <div className = {navClass}>
-  <Link to = "/" onClick = {() => {closeSideMenu(props.ViewStore)}}><div className = "hoverable nav-item">Home</div></Link>
-  <Link to = "/addpoll" onClick = {() => {closeSideMenu(props.ViewStore)}}><div className = "hoverable nav-item">New Poll</div></Link>
-  <div className = "inline nav-item" onClick = {() => {closeSideMenu(props.ViewStore)}}>
-  <div className className = "hoverable">Sign in</div>
-  <div className = "icon-container"><div className = "fb-icon hoverable"></div></div>
+  <div className = "userName nav-item">{"Hello, "} <span className = "userName-name">{userName}</span></div>
+   <Link className = "hoverable nav-item" to = "/" onClick = {() => {closeSideMenu(ViewStore)}}>Home</Link>
+   <Link className = "hoverable nav-item" to = "/addpoll" onClick = {() => {closeSideMenu(ViewStore)}}>New Poll</Link>
+   <Link className = "hoverable nav-item" to = "/myPolls" onClick = {() => {closeSideMenu(ViewStore)}}>My Polls</Link>
+  <div className = "hoverable nav-item"> <div onClick = {() => {closeSideMenu(ViewStore)}}>
+  <div onClick = {() => {ApiStore.logOut()}}>
+  Log Out
   </div>
-    <div className = "hoverable nav-item">About</div>
+  </div></div>
+   <Link to = "/about" className = "hoverable nav-item" onClick = {() => {closeSideMenu(ViewStore)}}>About</Link>
   </div>
-  )
+  
+  :
+  
+  <div className = {navClass}>
+  <Link className = "hoverable nav-item" to = "/" onClick = {() => {closeSideMenu(ViewStore)}}>Home</Link>
+  <Link className = "hoverable nav-item" to = "/addpoll" onClick = {() => {closeSideMenu(ViewStore)}}>New Poll</Link>
+  <div className = "inline nav-item" onClick = {() => {closeSideMenu(ViewStore)}}>
+  <a className = "hoverable nav-item login-btn"href = "/auth/facebook">
+  Log In
+  <div className = "icon-container"><div className = "fb-icon"></div></div>
+  </a>
+  </div>
+    <Link to = "/about" className = "hoverable nav-item" onClick = {() => {closeSideMenu(ViewStore)}}>About</Link>
+  </div>
+  
+ 
+ 
+ return(content) 
+ 
+  
+  
+  
+  
+  
 }
 
 

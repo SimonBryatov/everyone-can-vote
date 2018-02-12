@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DevCompileOptimize = require('webpack-dev-compile-optimize');
-//var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 //const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const config = {
@@ -14,7 +14,7 @@ const config = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
-   // './app/vendors/vendor.js',
+    //'./app/vendors/vendor.js',
     './app/main.js',
     './app/assets/scss/main.scss',
   ],
@@ -22,21 +22,30 @@ const config = {
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, 'docs'),
-    publicPath: '',
+    publicPath: '/',
   //  library: resolve(__dirname, 'docs')
   },
 
   //context: resolve(__dirname, 'app'),
 
   devServer: {
-   // cache: true,
+  // cache: true,
     hot: true,
   //  compress: true,
-     host: process.env.IP,
-  //https: true,
-    port: process.env.PORT,
+    host: process.env.IP,
+    inline: true,
+// https: true,
+  proxy: {
+  "/api/polldata/": {
+    target: "https://fcc-vote-simonbryatov.c9users.io:8081/api/pollsList",
+    secure: false
+  }
+  }
+,
+  historyApiFallback: true,
+    port: 8080,
     contentBase: resolve(__dirname, 'build'),
-    "public": "fcc-vote-simonbryatov.c9users.io"
+    public: "fcc-vote-simonbryatov.c9users.io"
     
   },
 
@@ -97,13 +106,13 @@ const config = {
   //         manifest: require('./vendors/vendor-manifest.json')
   //     }),
  // new DevCompileOptimize(),
-    // new HtmlWebpackPlugin(
-    //   {
-    //   template: resolve(__dirname, 'app', "index.html"),  
-    //   chunks: ["main", "common"],
-    //   filename: resolve(__dirname, 'docs', "index.html")
-    // }
-    //   ), 
+    new HtmlWebpackPlugin(
+      {
+      template: resolve(__dirname, 'app', "index.html"),  
+      chunks: ["manifest", "common", 'main'],
+      filename: resolve(__dirname, 'docs', "index.html")
+    }
+      ), 
      new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin({ filename: resolve(__dirname, 'docs/styles/style.css'), disable: true, allChunks: true }),
    // new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),

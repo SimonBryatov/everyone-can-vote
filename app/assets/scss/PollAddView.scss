@@ -1,14 +1,78 @@
 @import './partials';
+//@import './main';
 .poll-add-view {
      @extend .flex-centered-column;
-     flex-grow: 2;
+     flex-basis: 70%;
+     max-width: 85vmin;
      height: 80%;
+    margin-top: 7vmin;
      //display: flex;
       justify-content: flex-start;
  flex-direction: column;
  align-items: center;
  //flex-basis: 25%;
      //border: 1px solid;
+}
+
+
+.complete-fields {
+    font-family: "Barlow Condensed", sans-serif !important;
+      font-size: 6vmin;
+}
+
+.poll-add-login {
+    padding: 0px 5px 0px 5px;
+    background-color: rgba(10, 10, 10, 0.39);
+    color: white;
+    border: 3px solid rgb(58, 88, 155);
+    border-radius: 6px;
+}
+
+
+.icon-fb {
+    margin-left: 0.2em;
+    color: rgb(58, 88, 155);
+    stroke: 2px;
+}
+
+.ascii-smile {
+    color: #24dfff !important;
+}
+
+.msg-l-1 {
+    @extend .poll-add-msg-line;
+        color: #24dfff;
+    flex-basis: 20%;
+}
+
+.msg-l-3 {
+    @extend .poll-add-msg-line;
+        color: #39f9e0;
+     flex-basis: 20%;
+      font-family: "Barlow Condensed", sans-serif !important;
+}
+
+.msg-l-2 {
+    @extend .poll-add-msg-line;
+    display: flex;
+    flex-basis: 40%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    //white-space: pre-wrap;
+}
+
+.poll-add-msg-line {
+    font-family: "Lobster", sans-serif;
+    text-align: center;
+    font-size: 6vmin;
+    height: auto;
+   // flex-basis: 27%;
+}
+
+.ascii-smile {
+    color: $someRed;
+    margin-top: 0.4em;
 }
 
 .options-field::-webkit-scrollbar {
@@ -34,22 +98,23 @@
 .btn-create {
      //animation: halo 3s ease infinite;
      font-family: "Lobster";
-     font-size: 200%;
-     height: 35%;
+         font-size: 5vmin;
+    /* height: 35%; */
+    border-radius: 9px;
      background-color: $someRed;
      border: none;
-     width: 30%;
+     //width: 30%;
 }
 
   .btn-create:hover {
-    border: 3px dotted white;
+    //border: 3px dotted white;
     color: white;
 }
 
 .flex-item-header {
       font-family: 'Lobster', cursive;
- font-size: 5vmax;
-     flex-basis: 30%;
+ font-size: $font-size-header;
+     flex-basis: 20%;
 }
 
 .flex-item-name-field {
@@ -86,17 +151,34 @@
      width: 65%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
 
      .poll-add-view {
           flex-grow: 1;
           height: 85%;
      }
      
+     .msg-l-1 {
+          font-size: 5vmax;
+     }
+     
+     .msg-l-2 {
+          font-size: 5vmax;
+     }
+     
+     .msg-l-3 {
+          font-size: 5vmax;
+          flex-basis: 17%;
+     }
+    
+    .ascii-smile {
+        margin-top: 0.9em;
+    }
+     
      .flex-item-header {
 
  font-size: 7vmax;
-     flex-basis: 30%;
+     flex-basis: 20%;
 }
 
 .flex-item-name-field {
@@ -113,14 +195,14 @@
      flex-basis: 20%;
 }
   .name-field {
-    font-size: 5vmax;
+    font-size: 5vh;
     width: 100%;
     //height: 90%;
       
   }
   
   .options-field {
-    font-size: 4.5vmax;
+    font-size: 5vh;
       
   }
   

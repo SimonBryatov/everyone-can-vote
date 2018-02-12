@@ -1,0 +1,133 @@
+
+.userPollsList {
+  //margin-top: 10vmax;
+// @extend .polls-list;
+  //overflow-y: scroll;
+ // display: flex;
+     height: 80%;
+    overflow-y: scroll;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.listItemClass {
+    color: red;
+}
+
+// .user-polls-list-item {
+//   background-color: rgba(79, 181, 255, 0.45);  
+//       transition: 0.5s background-color;
+// }
+
+
+
+// .user-polls-list-container {
+//     flex-basis: 70%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+.user-polls-view {
+    flex-direction: column;
+    flex-basis: 70%;
+    height: 80%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-li-item-cont {
+    @extend .flex-item;
+ //display: flex;
+ height: auto !important;
+  margin-bottom: 0.6em;
+       align-items: flex-start !important;
+ justify-content: center;
+// align-items: center;
+}
+
+.user-li-item {
+  // @extend .polls-list-item;
+  font-size: 3vmin;
+  font-family: "Barlow Condensed", sans-serif;
+    background-color: rgba(77, 176, 248, 0.63);
+    height: auto;
+    teXT-align:center;
+    overflow-wrap: break-word;
+    //max-width: 24vmax;
+    width: 24vmax;
+
+     transition: 0.5s background-color;
+}
+      
+    
+    .user-li-item:hover {
+    transition: 0.1s background-color;
+    color: white !important;
+    background-color: rgba(0, 148, 255, 0.63);
+}
+    //flex-basis: 80%;
+   
+    
+
+
+.delete-btn {
+       background-color: rgba(119, 32, 32, 0.76);
+    border: none;
+    height: auto;
+    align-self: stretch;
+}
+
+.delete-btn:hover {
+  background-color: rgba(214, 0, 0, 0.62);   
+}
+
+@media screen and (max-width: 850px) {
+    
+ .userPollsList {
+         width: 45vmax;
+ }
+ 
+ .user-li-item-cont{
+     
+ } 
+ 
+ .user-li-item {
+     font-size: 3vmax;
+    flex-basis: 85%;       
+    // font-size: 5vh;
+ }
+
+ 
+ .delete-btn {
+     flex-basis: 15%;
+ }
+ 
+ @media screen and (orientation: landscape) {
+    
+ .userPollsList {
+      width: 115vmin;
+ }
+ 
+ .user-li-item-cont{
+    
+ } 
+ 
+ .user-li-item {
+         font-size: 4vmin;
+    flex-basis: 90%;
+     font-size: 5vh;
+ }
+ 
+ .delete-btn {
+     flex-basis: 10%;
+ }
+    
+
+    
+}
+
+}

@@ -3,3 +3,45 @@
 $mainTextColor: white;
 $panelColor: rgba(300,300,300, 0.1);
 $someRed: #FF5960;
+$font-3: 7vmax;
+$font-size-header: 9vmin;
+//$font-size-: 9vmin;
+
+
+.font-3 {
+    font-family: "Raleway", sans-serif;
+    font-size: $font-3;
+}
+
+.my-sroll::-webkit-scrollbar {
+    z-index: -1;
+}
+
+/* width */
+.my-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.my-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.27); 
+}
+
+/* Handle */
+.my-scroll::-webkit-scrollbar-thumb {
+    background: #ff5960; 
+}
+
+/* Handle on hover */
+.my-scroll::-webkit-scrollbar-thumb:hover {
+    background: #9c383c; 
+}
+
+@media screen and (max-width: 850px) {
+
+    .my-scroll::-webkit-scrollbar {
+    width: 4px;
+    z-index: -2;
+}
+
+}

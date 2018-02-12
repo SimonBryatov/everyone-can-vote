@@ -2,36 +2,52 @@
 
 .poll-view {
     @extend .flex-centered-column;
-    flex-grow: 2;
+    //flex-grow: 2;
     height: 85%;
+    width: 100%;
+     //max-width: 96vmin !important;
+    margin-top: 8vmin;
+    //flex-basis: 70%;
     //border: 1px solid;
    // justify-content: space-between;
 }
 
-.btn {
-    font-family: 'Lobster', sans-serif;
-    font-size: 20px;
-    padding: 3px 2px 3px 2px;
+.options-container {
+           flex-basis: 91%;
+    
+}
+
+  .btn {
+   width: 54% !important;
+    height: 4vmin !important;
+      font-family: 'Lobster', sans-serif;
+    font-size: 3vmin;
+       padding: 8px 2px 3px 8px;
     text-align: center;
-    background-color: $someRed;
-       border: 3px dotted black;
-   // border-radius: 10px;
+    background-color: #FF5960;
+    //border: 4px dashed white;
+    border-radius: 9px;
     color: black;
+  }
+  
+
+.btn:hover {
+     border: 4px dashed white;
 }
 
 .poll-view-btns {
-    flex-direction: column;
-     padding: 10px 0px 10px 0px;
-    //width: 80% !important;
-    flex-basis: 30%;
+       flex-direction: column;
+    justify-content: space-evenly !important;
+    /* padding: 10px 0px 10px 0px; */
+    flex-basis: 50%;
 }
 
-.btn-twitter {
-    background-color: rgba(0, 120, 300, 1);
+.btn-social {
+    background-color: #4ae092 !important;
 }
 
 .btn-submit {
-    
+    background-color: $someRed;
 }
 
 .option-cell {
@@ -46,12 +62,21 @@
 }
 
 .flex-item-poll-view-header {
+        word-wrap: break-word;
    @extend .flex-item-header;
+   font-size: 6vmin;
    text-align: center;
 }
 
+.user-option {
+     font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3vmax;
+    text-align: center;
+    flex-basis: 35%;
+}
+
 .left-line {
-    height: 80% !important;
+    height: 100% !important;
   @extend .flex-centered-column, .flex-item;
  
 }
@@ -63,6 +88,7 @@
 }
 
 .poll-view-sub-headers {
+        word-wrap: break-word;
  @extend .flex-row, .flex-item;
  //flex-direction: column;
    // width: 80%;
@@ -78,8 +104,13 @@
  @extend .flex-item;
  font-family: 'Lobster', cursive;
  color: $someRed !important;
- flex-basis: 30%;
+ flex-basis: 20%;
   font-size: 50px;
+}
+
+.chart-dummy {
+ font-size: 4vmax;   
+ text-align: center;
 }
 
 .option-name {
@@ -90,14 +121,41 @@
  text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+
+  .last-vote {
+      font-size: 2.5vmin;
+      text-align: center;
+  }
   
+  .last-vote-span {
+      color: #4eb2fc;
+  }
+
+@media screen and (max-width: 850px) {
+  
+  .user-option {
+          border: 2px dashed;
+          font-size: 3.5vmax;
+    margin-bottom: 15px;
+  }
+  
+  .last-vote {
+      font-size: 2.3vmax;
+  }
+  
+  .btn {
+        width: 42% !important;
+    min-height: 9vmin !important;
+        padding: 5px 2px 2px 5px;
+  }
+
   #chart-container {
       //flex-grow: 3;
       height: 30vmax;
   }
   
   .flex-item-poll-view-header {
+         // word-wrap: break-word;
       font-size: 6vmax;
       padding: 2vmax 0 0 0;
    //flex-basis: 100%;
@@ -107,7 +165,7 @@
   .poll-view {
       flex-grow: 1;
       position: absolute;
-      top: 7%;
+          top: -.6vmax;
       width: 100%;
       height: auto;
       overflow: scroll;
@@ -125,11 +183,19 @@
   }
   
   
-  .btn-submit, .btn-twitter {
-      width: 70%;
+  .btn-submit, .btn-social {
+     
       font-size: 3vmax;
     
      
+  }
+  
+  .btn-submit {
+      
+  }
+  
+  .btn-social {
+      
   }
   
   
@@ -160,7 +226,7 @@
   
   .p-1 {
       padding: 2vmax 0 2vmax 0;
-      font-size: 5vmax;
+      font-size: 4vmax;
   }
   
   .option-name {

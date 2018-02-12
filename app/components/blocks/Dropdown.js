@@ -1,39 +1,41 @@
 import React from 'react';
-//import '../../assets/scss/Dropdown.scss'
 import {observer, inject} from 'mobx-react';
 
-//style = {{"background-color": colorMap[ind]}
 
-const renderList = (options, store) => {
-    let colorMap = store.getProperty("colorMap");
-    if (colorMap == 0) return;
+const renderList = (options, Vstore, Astore) => {
+   let colorMap = Vstore.getProperty("colorMap");
+    if (!colorMap) return;
   const list = [];
   options.forEach((opt, ind) => {
    let rgb = hexToRgb(colorMap[ind]);
    let colorString = "rgba(" + rgb + ", 0.3)" 
-   list.push(<div className = "dropdown-list-item" style = {{"background-color": colorString}}
-   onMouseOver = {() => {store.activeOptionIndex.set(ind)}} >{opt.name}</div>)
+   list.push(<div className = "options-list-item" style = {{"background-color": colorString}}
+   onMouseOver = {() => {Vstore.activeOptionIndex.set(ind)}} onClick = {() => {Vstore.chosenOptionIndex.set(ind); Astore.newOption.set("")}} >{opt.name}</div>)
   }
   )
-  list.push(<input className = "dropdown-list-item new-option" placeholder = "Add new option"></input>)
   return(list)
 } 
 
-@inject("ViewStore") @observer class Dropdown extends React.Component {
+@inject("ViewStore", "ApiStore") @observer class Dropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             collapsed: true
         }
-        console.log("online")
     }
     
     render() {
     
-    let store = this.props.ViewStore;
+    let Vstore = this.props.ViewStore;
+    let Astore = this.props.ApiStore;
+    console.log("Options", this.props.options);
     return(    
-    <div className = "dropdown">
-    {renderList(this.props.options, store)}
+    <div className = "options-list">
+    <div className = "options-list-cont my-scroll">
+    {renderList(this.props.options, Vstore, Astore)}
+    </div>
+    <input className = "options-list-item new-option" placeholder = "Add new option" onChange = {(e) => {Astore.newOption.set(e.target.value)}}
+    value = {Astore.newOption.get()}></input>
     </div>
     )
 }

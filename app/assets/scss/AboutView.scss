@@ -1,0 +1,97 @@
+@import './partials';
+.about-view {
+         @extend .flex-centered-column;
+     flex-basis: 70%;
+     max-width: 85vmin;
+     height: 80%;
+    margin-top: 7vmin;
+     //display: flex;
+      justify-content: flex-start;
+ flex-direction: column;
+ align-items: center;
+ font-family: "Barlow Condensed";
+ font-size: 3.2vmin;
+ text-align: center;
+ //flex-basis: 25%;
+     //border: 1px solid;
+}
+
+.about-view-t-1 {
+     font-size: 5vmin;
+     flex-basis: 33%;
+}
+
+.about-view-t-2 {
+    flex-basis: 19%;
+    color: #4eb2fc;
+    // font-size: 4vmin;
+}
+
+.fcc-mention {
+    color: #06e206;
+}
+
+.about-view-t-3 {
+    flex-basis: 20%;
+    // font-size: 4vmin;
+}
+
+.about-view-t-4 {
+    flex-basis: 20%;
+}
+    // font-size: 4vmin;
+
+
+.about-view-t-5 {
+    flex-basis: 9%;
+    // font-size: 4vmin;
+}
+
+.about-view-t-6 {
+    flex-basis: 20%;
+    // font-size: 4vmin;
+}
+
+
+@media screen and (max-width: 850px) {
+.about-view {
+    font-size: 3vmax;
+    width: 100%;
+    height: auto;
+}
+
+.about-view-t-1 {
+    font-size: 4vmax;
+    flex-basis: 20%;
+}
+
+
+.about-view-t-2 {
+    flex-basis: 19%;
+    //color: #4eb2fc;
+    // font-size: 4vmin;
+}
+
+.about-view-t-3 {
+    flex-basis: 20%;
+    // font-size: 4vmin;
+}
+
+.about-view-t-4 {
+    flex-basis: 20%;
+}
+    // font-size: 4vmin;
+
+
+.about-view-t-5 {
+    flex-basis: 9%;
+    // font-size: 4vmin;
+}
+
+.about-view-t-6 {
+    flex-basis: 20%;
+    // font-size: 4vmin;
+}
+
+    
+}

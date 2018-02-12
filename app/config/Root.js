@@ -2,14 +2,17 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from '../components/app/App';
 import { Provider } from 'mobx-react';
-import store from '../stores/ViewStore';
+import Vstore from '../stores/ViewStore';
+import Astore from '../stores/ApiStore';
 import { toJS } from 'mobx';
 
-const ViewStore = new store(); 
+const ViewStore = new Vstore(); 
 window.onresize = () => {
   setDeviceScreenType();
- // ViewStore.updater.set(!ViewStore.updater)
 }
+export {ViewStore};
+
+const ApiStore = new Astore();
 
 let setDeviceScreenType = () => {
   let screenSize = document.documentElement.clientWidth;
@@ -18,11 +21,10 @@ let setDeviceScreenType = () => {
 }
 
 setDeviceScreenType();
-//console.log(ViewStore.getJSON('currentPoll'))
 
 const Root = () => {
   return (
-    <Provider ViewStore = {ViewStore}>
+    <Provider ViewStore = {ViewStore} ApiStore = {ApiStore}>
     <Router>
       <App />
     </Router>
@@ -31,3 +33,4 @@ const Root = () => {
 };
 
 export default Root;
+
