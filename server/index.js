@@ -114,8 +114,8 @@ let sessionCheck = (userId, poll_id) => {
 ////////////////////////
 
 app.get("*", (req, res, next) => {
-    console.log(req.protocol, req.secure);
-    console.log("Getting url: ", req.url.substring(0, 5));
+    //console.log(req.protocol, req.secure);
+  //  console.log("Getting url: ", req.url.substring(0, 5));
     let urlType = req.url.substring(0, 5)
 if ((urlType !== "/api/") && (urlType !== "/auth")) {    
  console.log(req.url, "serving start page!");
