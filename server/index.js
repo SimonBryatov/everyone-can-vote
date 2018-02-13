@@ -175,7 +175,7 @@ if ((urlType !== "/api/") && (urlType !== "/auth")) {
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "https://fcc-vote-simonbryatov.c9users.io:8081/auth/facebook/callback",
+    callbackURL: process.env.APP_URL +  "auth/facebook/callback",
     profileFields: ['id', 'first_name', 'gender', 'last_name', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
