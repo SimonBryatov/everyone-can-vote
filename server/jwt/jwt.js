@@ -1,6 +1,6 @@
 const passport = require('passport');
 const passportJwt = require('passport-jwt');
-const config = require('../../config/config');
+//const config = require('../../config/config');
 const UserModel = require('../mongo/UserModel');
 
 
@@ -15,7 +15,7 @@ var cookieExtractor = function(req) {
 
 const jwtOptions = {
   jwtFromRequest: cookieExtractor,
-  secretOrKey: config.secret,
+  secretOrKey: process.env.JWT_SECRET,
 };
 
 passport.use(new passportJwt.Strategy(jwtOptions, (payload, done) => {
