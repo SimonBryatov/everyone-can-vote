@@ -6,7 +6,7 @@ const path = require("path")
 
 function generateAccessToken(userId) {
   const expiresIn = '14d';
-  const secret = config.secret;
+  const secret = process.env.JWT_SECRET;
   const token = jwt.sign({}, secret, {
     expiresIn: expiresIn,
     subject: userId.toString()
