@@ -2,11 +2,12 @@ import {observable, action} from 'mobx';
 import React from 'react';
 import { toJS } from 'mobx';
 import axios from "axios";
-import appUrl from "../config/appUrl";
+//import appUrl from "../config/appUrl";
 import {ViewStore} from "../config/Root"
 import URLSearchParams from "url-search-params"
 var cookies = require('js-cookie');
 
+let appUrl = "https://everyone-can-vote.herokuapp.com"
 
 class ApiStore {
     constructor() {
