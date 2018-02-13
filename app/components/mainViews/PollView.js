@@ -78,7 +78,7 @@ import {observer, inject} from 'mobx-react';
 let buttonRender = (vote, cond) => {
    if (cond || cond == 0) {
     return (<div className = "flex-item poll-view-btns"> <div className = "flex-item btn btn-submit" onClick = {() => {vote()}}>Submit</div>
-        <a className = "flex-item btn btn-social" href="https://www.facebook.com/sharer/sharer.php?" target="_blank">
+        <a className = "flex-item btn btn-social" href="https://www.facebook.com/sharer/sharer.php?title=fdsds" target="_blank">
   Share on 
  <i className="fab fa-facebook icon-fb"></i></a> </div>)
    } else

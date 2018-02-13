@@ -1,21 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
-import axios from 'axios';
-//import '../../assets/scss/HomeView.scss'
 
 @inject("ViewStore") @observer class HomeView extends React.Component {
     
     constructor(props) {
         super(props)
-        axios.get('https://fcc-vote-simonbryatov.c9users.io:8081/api/pollsList')
-         .then((res) => console.log(res.data, 21312323));
-    }
-    
-    componentWillMount()  {
-        console.log("вах!")
-        axios.get('https://timestamp-ms.herokuapp.com/1450137600')
-         .then((res) => console.log(res.data, 21312323));
     }
     
     render() {
@@ -33,10 +23,8 @@ import axios from 'axios';
     </div></div>
     )
     }
-//<span className = "red-word">~(˘▾˘~)</span>
+
 }
 
-  // 
-  // <div className = "l-2-el arrow-left">{'<'}==========</div>
 
 export default HomeView;

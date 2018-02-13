@@ -1,65 +1,22 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require('express');
 const path = require("path")
 const cors = require('cors');
-//const mongoStore = require("./mongo")
 const mongoose = require("mongoose");
-//mongoStore.getPolls();
 const app = express();
-var morgan = require('morgan')
+const morgan = require('morgan')
 const passport = require("passport")
 const FacebookStrategy = require('passport-facebook').Strategy;
-//const JwtStrategy = require('passport-jwt').Strategy;
-var cookieParser = require('cookie-parser')
-require('./jwt/jwt');
-//console.log(path.resolve(__dirname));
-//require(path.resolve(__dirname, "./jwt/jwt"))
+const cookieParser = require('cookie-parser')
 const AuthController = require(path.resolve(__dirname, "./controllers/AuthController"))
-//const flash = require("connect-flash");
-//const debug = require("debug")("../index.js");
-const dotenv = require("dotenv");
-dotenv.config();
+require('./jwt/jwt');
 console.log("Starting a server...");
 const chalk = require("chalk");
-//var debug = require('debug')('http')
-  // const { resolve } = require('path');
-  // // Step 1: Create & configure a webpack compiler
-  // var webpack = require('webpack');
-  // var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../webpack.config.js');
-  // var webpackCompiler = webpack(webpackConfig);
 
-  // // Step 2: Attach the dev middleware to the compiler & the server
-  // const webpackDevM = require("webpack-dev-middleware");
-  // const webpackHotM = require("webpack-hot-middleware");
-  
-  // const wpDM = webpackDevM(webpackCompiler, {});
-  // const wpHM = webpackHotM(webpackCompiler);
-  // app.use(wpDM);
-  // app.use(wpHM);
- // debug("hello")
- //  debug("hello")
 app.enable("trust proxy");
 app.use(cookieParser())
-//app.use(flash())
-
-console.log(process.NODE_ENV)
-
-mongoose.connect(process.env.MONGOLAB_URI , () => {});
-  mongoose.connection.once('open', function() {
-            console.log('MongoDB event open');
-             app.listen(process.env.PORT || 5000, () => {
-     console.log("Online");
- })
-            mongoose.connection.db.collection("Polls", function(err, collection){
-        collection.find({}).toArray(function(err, data){
-        })
- })
-})
-
-
-
-
 app.use(morgan('tiny'))
-
 app.use(express.static(path.resolve('./docs')))
 app.use(express.static(path.resolve('./app')))
 app.use(cors());
@@ -67,10 +24,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+mongoose.connect(process.env.MONGOLAB_URI , () => {});
+  mongoose.connection.once('open', function() {
+            console.log('MongoDB event open');
+             app.listen(process.env.PORT || 5000, () => {
+     console.log("Online");
+ })
+           
+ })
+
+//Session check
 let sessionManager = []
-
-
-
 
 let sessionCheck = (userId, poll_id) => {
  console.log(chalk.red(poll_id))
@@ -142,23 +106,12 @@ let sessionCheck = (userId, poll_id) => {
    return false
    
   }
- 
-   
-   
  }
 }
- 
 
-
-// app.use((req, res, next) => {
-//  console.log(req.protocol, req.secure)
-//  if (req.secure) {
-//    next()
-//  } else {
-//   res.redirect("https://" + req.headers.host + req.url);
-//  }
-// })
-
+///////////////////////// 
+//Routing
+////////////////////////
 
 app.get("*", (req, res, next) => {
     console.log(req.protocol, req.secure);
@@ -171,6 +124,7 @@ if ((urlType !== "/api/") && (urlType !== "/auth")) {
 } else next();
 
 })
+
 
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
@@ -195,6 +149,7 @@ passport.use(new FacebookStrategy({
     
   }
 ));
+
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
@@ -253,8 +208,6 @@ app.post("/api/createNewPoll", function(req, res, next) {
 ) 
 
 
-
-
 app.get("/api/vote", (req, res, next) => {
  
      if (!req.cookies.userToken)
@@ -265,7 +218,6 @@ app.get("/api/vote", (req, res, next) => {
     else {
      
   passport.authenticate('jwt', function(err, user, info) {
-  //if (err) {console.log(err)}
     console.log(info);
     if (info) {
      res.status(401).send(info.message) 
@@ -284,12 +236,7 @@ app.get("/api/vote", (req, res, next) => {
 
     PollModel.findById(req.query.pollId, (err, doc) => {
     if (!err) {
-    //console.log("Updating Polls List with " + doc)
-    //let one = user._id;
-    
-    let lastVote = null;
     doc.options.forEach((el, ind) => {
-     
      let userVote = el.voters.findIndex((voter) => {
       if (voter == user["_id"]) {
        return true;
@@ -298,8 +245,6 @@ app.get("/api/vote", (req, res, next) => {
       
      
      })
-     
-     //console.log(userVote)
      
       if (userVote != -1) {
       //console.log(newVoters);
@@ -365,7 +310,6 @@ app.get("/api/pollsList", (req, res, next) => {
    var PollModel = require("./mongo/PollModel");
    PollModel.find({}, (err, polls) => {
     if (!err) {
-   // console.log("Sending Polls List... " + polls)
     res.json(polls);
     }
    }
@@ -375,7 +319,6 @@ app.get("/api/pollsList", (req, res, next) => {
 
 app.get("/api/deletePoll", function(req, res, next) {
     passport.authenticate('jwt', function(err, user, info) {
-    //if (err) {console.log(err)}
     if (info) {
      res.status(401).send(info.message) 
      } else {
@@ -397,7 +340,3 @@ app.get("/api/deletePoll", function(req, res, next) {
 )
 
 
-
-
-
-console.log(process.env.PORT);

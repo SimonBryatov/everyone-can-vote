@@ -2,7 +2,9 @@ const passport = require('passport');
 const passportJwt = require('passport-jwt');
 //const config = require('../../config/config');
 const UserModel = require('../mongo/UserModel');
-
+//const dotenv = require("dotenv");
+//dotenv.c
+console.log("hello", process.env.APP_URL)
 
 var cookieExtractor = function(req) {
     var token = null;
