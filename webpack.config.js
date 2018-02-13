@@ -70,7 +70,7 @@ const config = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader',
+            'css-loader',  'postcss-loader',
             {
               loader: 'sass-loader',
               query: {
