@@ -14,13 +14,13 @@ require('./jwt/jwt');
 //console.log(path.resolve(__dirname));
 //require(path.resolve(__dirname, "./jwt/jwt"))
 const AuthController = require(path.resolve(__dirname, "./controllers/AuthController"))
-const flash = require("connect-flash");
+//const flash = require("connect-flash");
 //const debug = require("debug")("../index.js");
 const dotenv = require("dotenv");
 dotenv.config();
 console.log("Starting a server...");
 const chalk = require("chalk");
-var debug = require('debug')('http')
+//var debug = require('debug')('http')
   // const { resolve } = require('path');
   // // Step 1: Create & configure a webpack compiler
   // var webpack = require('webpack');
@@ -39,7 +39,7 @@ var debug = require('debug')('http')
  //  debug("hello")
 app.enable("trust proxy");
 app.use(cookieParser())
-app.use(flash())
+//app.use(flash())
 
 console.log(process.NODE_ENV)
 
