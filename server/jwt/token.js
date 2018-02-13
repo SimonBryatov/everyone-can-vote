@@ -1,7 +1,7 @@
 
 const jwt = require('jsonwebtoken');
 const path = require("path")
-const config = require(path.resolve('./config/config'));
+//const config = require(path.resolve('./config/config'));
 
 
 function generateAccessToken(userId) {
