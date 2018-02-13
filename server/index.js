@@ -13,7 +13,7 @@ const AuthController = require(path.resolve(__dirname, "./controllers/AuthContro
 require('./jwt/jwt');
 console.log("Starting a server...");
 const chalk = require("chalk");
-
+console.log(process.env.APP_URL)
 app.enable("trust proxy");
 app.use(cookieParser())
 app.use(morgan('tiny'))

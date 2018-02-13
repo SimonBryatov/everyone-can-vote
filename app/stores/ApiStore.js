@@ -7,8 +7,8 @@ import {ViewStore} from "../config/Root"
 import URLSearchParams from "url-search-params"
 var cookies = require('js-cookie');
 
-let appUrl = "https://everyone-can-vote.herokuapp.com"
-
+//let appUrl = "https://everyone-can-vote.herokuapp.com"
+let appUrl = "https://fcc-vote-simonbryatov.c9users.io"
 class ApiStore {
     constructor() {
         this.fetchPollsList();

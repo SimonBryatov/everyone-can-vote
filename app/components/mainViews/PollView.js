@@ -61,7 +61,7 @@ import {observer, inject} from 'mobx-react';
        <div className = "flex-item user-option">{userOption()}</div>
        <div className = "flex-item options-container"><Dropdown options = {storedCurrentPoll.options}/></div> 
        {(this.props.ApiStore.lastVote.get() != null) ? <div className = "last-vote"><span className = "last-vote-span">Last Voted for</span>{' "' + storedCurrentPoll.options[this.props.ApiStore.lastVote.get()].name + '"'}</div> : null}
-      {buttonRender(this.props.ApiStore.vote, this.props.ApiStore.lastVote.get())}
+      {buttonRender(this.props.ApiStore.vote, this.props.ApiStore.lastVote.get(), this.props.ViewStore.getProperty("currentPoll"))}
     </div>
        {chartRender(storedCurrentPoll, this.props.ViewStore)}
    
@@ -75,12 +75,17 @@ import {observer, inject} from 'mobx-react';
 }
 
 
-let buttonRender = (vote, cond) => {
+let buttonRender = (vote, cond, poll) => {
    if (cond || cond == 0) {
     return (<div className = "flex-item poll-view-btns"> <div className = "flex-item btn btn-submit" onClick = {() => {vote()}}>Submit</div>
-        <a className = "flex-item btn btn-social" href="https://www.facebook.com/sharer/sharer.php?title=fdsds" target="_blank">
+        <button className = "flex-item btn btn-social" onClick = {() => {FB.ui(
+ {
+  method: 'share',
+  quote: `I've voted for "${poll.options[cond].name}" at "${poll.name}"`,
+  href: window.location.href,
+}, function(response){});}}>
   Share on 
- <i className="fab fa-facebook icon-fb"></i></a> </div>)
+ <i className="fab fa-facebook icon-fb"></i></button> </div>)
    } else
    
    return(<div className = "flex-item poll-view-btns"> <div className = "flex-item btn btn-submit" onClick = {() => {vote()}}>Submit</div></div>)
