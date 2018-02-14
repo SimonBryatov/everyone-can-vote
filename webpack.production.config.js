@@ -53,8 +53,8 @@ const config = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader',
-          'sass-loader'
+            'css-loader',  'postcss-loader',
+            { loader: 'sass-loader', query: { sourceMap: false } },
           ],
           publicPath: '../'
         }),
