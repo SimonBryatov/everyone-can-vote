@@ -54,7 +54,7 @@ const config = {
           fallback: 'style-loader',
           use: [
             'css-loader',  'postcss-loader',
-            { loader: 'sass-loader', query: { sourceMap: false } },
+          'sass-loader'
           ],
           publicPath: '../'
         }),
