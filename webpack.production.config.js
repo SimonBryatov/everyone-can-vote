@@ -56,7 +56,7 @@ const config = {
             'css-loader',  'postcss-loader',
             { loader: 'sass-loader', query: { sourceMap: false } },
           ],
-          publicPath: '../'
+          publicPath: ''
         }),
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=images/[name].[ext]' },
